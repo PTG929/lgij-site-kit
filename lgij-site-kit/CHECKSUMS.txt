@@ -1,0 +1,3 @@
+v1.0.0
+4c126eb4fba5e83df980371f6c9bb6f52674efa3ccbf0c84b1577873e6211610  dist/lgij-party-builder.min.js
+f3419339c867172597ce89466f85020dcd18ad40d8f83d6dbf4a25a920a0de17  dist/lgij-party-builder.js

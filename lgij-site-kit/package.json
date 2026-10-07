@@ -1,0 +1,16 @@
+{
+  "name": "lgij-site-kit",
+  "version": "1.0.0",
+  "description": "Let's Get It Jumping drop-in web components",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "build": "node build.mjs",
+    "test": "node test/run.js"
+  },
+  "dependencies": {
+    "esbuild": "^0.24.0"
+  },
+  "private": true
+}

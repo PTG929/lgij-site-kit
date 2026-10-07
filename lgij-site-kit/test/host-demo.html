@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Hostile host page</title>
+<style>
+@font-face{font-family:'Fredoka';font-weight:500;src:url(fonts/fredoka-latin-500-normal.woff2) format('woff2')}
+@font-face{font-family:'Fredoka';font-weight:600;src:url(fonts/fredoka-latin-600-normal.woff2) format('woff2')}
+@font-face{font-family:'Fredoka';font-weight:700;src:url(fonts/fredoka-latin-700-normal.woff2) format('woff2')}
+@font-face{font-family:'Nunito';font-weight:400;src:url(fonts/nunito-latin-400-normal.woff2) format('woff2')}
+@font-face{font-family:'Nunito';font-weight:600;src:url(fonts/nunito-latin-600-normal.woff2) format('woff2')}
+@font-face{font-family:'Nunito';font-weight:700;src:url(fonts/nunito-latin-700-normal.woff2) format('woff2')}
+@font-face{font-family:'Nunito';font-weight:800;src:url(fonts/nunito-latin-800-normal.woff2) format('woff2')}
+@font-face{font-family:'Caveat';font-weight:600;src:url(fonts/caveat-latin-600-normal.woff2) format('woff2')}
+@font-face{font-family:'Caveat';font-weight:700;src:url(fonts/caveat-latin-700-normal.woff2) format('woff2')}
+/* deliberately hostile globals, like a builder's reset plus sloppy overrides */
+html{font-size:62.5%}
+*{margin:0;padding:0;box-sizing:content-box;font-family:"Comic Sans MS",cursive;line-height:3;letter-spacing:2px;color:#c00;text-align:center}
+button{background:hotpink!important;border-radius:0!important;border:4px dotted lime!important}
+svg{width:24px!important;height:24px!important}
+h2{font-size:50px!important;color:purple!important}
+input,select{border:5px solid orange!important;background:black!important}
+[hidden]{display:block!important}
+body{background:#FFF8EC}
+header.site{position:sticky;top:0;z-index:50;height:76px;background:#fffdf6;border-bottom:2px solid #f3e3b4;display:flex;align-items:center;gap:16px;padding:0 24px}
+header.site b{font:700 20px Fredoka,sans-serif;color:#1E2A4A;margin-right:auto;letter-spacing:0}
+.wrap{max-width:1240px;margin:0 auto;padding:32px 16px}
+.section-title{font:600 40px/1.1 Fredoka,sans-serif;color:#1E2A4A;letter-spacing:0;margin-bottom:20px}
+.filler{height:600px;display:grid;place-items:center;font-size:20px}
+lgij-party-builder{--lgij-sticky-top:88px;--lgij-sticky-top-mobile:76px}
+</style>
+</head>
+<body>
+<header class="site"><b>Let's Get It Jumping</b>
+  <button id="snd" type="button">Sound off</button><button id="clm" type="button">Calm mode</button>
+  <button id="pal" type="button">Palette</button><button id="pick" type="button">Book This One: Rainbow</button>
+</header>
+<main class="wrap">
+  <div class="filler">Home page content above the Party Builder</div>
+  <section id="book">
+    <h2 class="section-title">Book Your Bounce</h2>
+    <lgij-party-builder demo>
+      <script type="application/json" data-lgij-config>{"phone":"(757) 555-0199","links":{"policies":"/policies","privacy":"/privacy-sms-terms"}}</script>
+      <div class="lgij-fallback">
+        <h3>Our bounce houses</h3>
+        <ul>
+          <li>Toddler Bounce House with Slide, $50 an hour</li>
+          <li>Rainbow Bounce House, $50 an hour</li>
+          <li>Unicorn Bounce House, $35 an hour</li>
+          <li>Toddler Bounce House with Slide &amp; Play Area, $50 an hour</li>
+        </ul>
+        <p>Every party is at least 2 hours. Text us at (757) 555-0199 to book.</p>
+      </div>
+    </lgij-party-builder>
+  </section>
+  <div class="filler">FAQ and the rest of the page below</div>
+</main>
+<script>
+  const h = document.documentElement; const pals = ['rainbow','unicorn','sunshine','ocean','berry']; let pi = 0;
+  document.getElementById('snd').onclick = () => h.setAttribute('data-lgij-sound', h.getAttribute('data-lgij-sound') === 'on' ? 'off' : 'on');
+  document.getElementById('clm').onclick = () => h.setAttribute('data-lgij-calm', h.getAttribute('data-lgij-calm') === 'on' ? 'off' : 'on');
+  document.getElementById('pal').onclick = () => h.setAttribute('data-lgij-palette', pals[++pi % pals.length]);
+  document.getElementById('pick').onclick = () => window.dispatchEvent(new CustomEvent('lgij:select-unit', { detail: { slug: 'rainbow' } }));
+</script>
+<script src="../dist/lgij-party-builder.min.js" defer></script>
+</body>
+</html>
